@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.NoteVault2" parent="android:Theme.Material.NoActionBar">
+        <!-- Customize the splash screen -->
+        <item name="android:windowSplashScreenBackground">@color/color_primary</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+<!--        <item name="postSplashScreenTheme">@style/Theme.MyApp</item>-->
+    </style>
+</resources>

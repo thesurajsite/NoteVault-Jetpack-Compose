@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "157550882084",
+    "project_id": "notevault-c2912",
+    "storage_bucket": "notevault-c2912.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157550882084:android:aad18891ae14542ea917b1",
+        "android_client_info": {
+          "package_name": "com.surajverma.notevault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJH2pzFJUc-tLcKPk-4TTql5Ixk2Fx-vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

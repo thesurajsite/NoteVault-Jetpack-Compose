@@ -28,6 +28,7 @@ fun NavGraph(){
             ProfileScreen(navController)
         }
 
+
         composable(route = "upload"){
             UploadScreen(navController)
         }

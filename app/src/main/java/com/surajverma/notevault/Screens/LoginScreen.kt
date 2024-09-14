@@ -38,6 +38,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.surajverma.notevault.AuthState
@@ -45,7 +46,9 @@ import com.surajverma.notevault.AuthViewModel
 import com.surajverma.notevault.R
 
 @Composable
-fun LoginScreen(navController: NavController, authViewModel: AuthViewModel){
+fun LoginScreen(navController: NavController){
+
+    val authViewModel: AuthViewModel = viewModel()
 
     var email by remember {
         mutableStateOf("")
@@ -159,5 +162,5 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel){
 @Composable
 fun LoginScreenPreview() {
     val navController= rememberNavController()
-    LoginScreen(navController, AuthViewModel())
+    LoginScreen(navController)
 }

@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.surajverma.notevault.AuthViewModel
+import com.surajverma.notevault.Screens.EditProfile
 import com.surajverma.notevault.Screens.HomeScreen
 import com.surajverma.notevault.Screens.LoginScreen
 import com.surajverma.notevault.Screens.ProfileScreen
@@ -42,7 +43,11 @@ fun NavGraph(){
         }
 
         composable(route= "login"){
-            LoginScreen(navController, AuthViewModel())
+            LoginScreen(navController)
+        }
+
+        composable(route= "editProfile"){
+            EditProfile()
         }
 
     }

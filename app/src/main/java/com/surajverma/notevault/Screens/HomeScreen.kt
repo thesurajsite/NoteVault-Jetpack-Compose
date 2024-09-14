@@ -57,11 +57,6 @@ fun HomeScreen(navController: NavController, authViewModel: AuthViewModel){
 
             Text(text = "Home Screen", fontSize = 30.sp, color = Color.White)
 
-            TextButton(onClick = {
-                authViewModel.signout()
-            }) {
-                Text(text = "SignOut", fontSize = 25.sp, color = Color.White)
-            }
 
         }
 

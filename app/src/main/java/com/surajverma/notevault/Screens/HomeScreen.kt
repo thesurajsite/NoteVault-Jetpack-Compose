@@ -41,6 +41,8 @@ fun HomeScreen(navController: NavController, authViewModel: AuthViewModel){
             BottomNavigationBar(navController)
         }
 
+
+
     ){ innerPadding ->
 
         Column(

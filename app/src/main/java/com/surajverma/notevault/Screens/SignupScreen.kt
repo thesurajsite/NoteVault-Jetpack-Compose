@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -110,6 +111,7 @@ fun SignupScreen(navController: NavController, authViewModel: AuthViewModel){
 
         OutlinedTextField(value = password,
             onValueChange = {password=it},
+            visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 40.dp),
@@ -130,6 +132,7 @@ fun SignupScreen(navController: NavController, authViewModel: AuthViewModel){
 
         OutlinedTextField(value = confirmPassword,
             onValueChange = {confirmPassword=it},
+            visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 40.dp),

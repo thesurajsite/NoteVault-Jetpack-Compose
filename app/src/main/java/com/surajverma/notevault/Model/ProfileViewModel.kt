@@ -9,12 +9,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.surajverma.notevault.SharedPreferences
 
 class ProfileViewModel: ViewModel(){
 
     private val auth = FirebaseAuth.getInstance()
     private val db: FirebaseFirestore by lazy { Firebase.firestore}
     private val userId= auth.currentUser?.uid.toString()
+    private lateinit var sharedPreferences: SharedPreferences
 
     val userProfile = "USER_PROFILE"
 
@@ -27,52 +29,43 @@ class ProfileViewModel: ViewModel(){
 
     fun saveProfile(profileModel: ProfileModel, context: Context){
 
-     //   val map = mutableMapOf<String,String>()
-//        map.put("NAME", profileModel.name!!)
-//        map.put("COLLEGE_NAME", profileModel.collegeName!!)
-//        map.put("ENROLLMENT", profileModel.enrollment!!)
-//        map.put("BRANCH", profileModel.branch!!)
-//        map.put("YEAR", profileModel.year!!)
-//        map.put("PHONE", profileModel.phone!!)
+        sharedPreferences = SharedPreferences(context)
 
-        db.collection(userProfile).document(userId).set(profileModel)
+
+        // Update Profile on Firebase
+        // written the complete userId code because it was being used immediately, even before initialization of the userId variable
+        db.collection(userProfile).document(auth.currentUser?.uid.toString()).set(profileModel)
             .addOnSuccessListener {
-                Toast.makeText(context, "Profile Edited", Toast.LENGTH_SHORT).show()
                 _saveStatus.postValue(true)
+
+                // Update Profile on sharedPreferences
+                sharedPreferences.updateName(profileModel.name.toString())
+                sharedPreferences.updateCollege(profileModel.collegeName.toString())
+                sharedPreferences.updateEnrollment(profileModel.enrollment.toString())
+                sharedPreferences.updateBranch(profileModel.branch.toString())
+                sharedPreferences.updateYear(profileModel.year.toString())
+                sharedPreferences.updatePhone(profileModel.phone.toString())
+
             }
             .addOnFailureListener {
                 Toast.makeText(context, "Some went wrong", Toast.LENGTH_SHORT).show()
             }
 
-
     }
 
     fun getProfile(context: Context){
-        db.collection(userProfile).document(userId).get()
-            .addOnSuccessListener {
 
-                val name = it.get("name").toString()
-                val collegeName=it.get("collegeName").toString()
-                val enrollment=it.get("enrollment").toString()
-                val branch=it.get("branch").toString()
-                val year=it.get("year").toString()
-                val phone=it.get("phone").toString()
+        sharedPreferences = SharedPreferences(context)
 
+        val name = sharedPreferences.getName()
+        val college = sharedPreferences.getCollege()
+        val enrollment = sharedPreferences.getEnrollment()
+        val branch = sharedPreferences.getBranch()
+        val year = sharedPreferences.getYear()
+        val phone = sharedPreferences.getPhone()
 
-                val profile = ProfileModel(name, collegeName, enrollment, branch, year, phone)
-
-
-              //  val profile = it.toObject(ProfileModel::class.java)
-                _userProfileData.postValue(profile)
-//
-//                Toast.makeText(context, "$name $collegeName $enrollment $branch $year $phone", Toast.LENGTH_SHORT).show()
-
-
-
-            }
-            .addOnFailureListener {
-                Toast.makeText(context, "Error fetching profile", Toast.LENGTH_SHORT).show()
-            }
+        val profile = ProfileModel(name, college, enrollment, branch, year, phone)
+        _userProfileData.postValue(profile)
 
 
     }

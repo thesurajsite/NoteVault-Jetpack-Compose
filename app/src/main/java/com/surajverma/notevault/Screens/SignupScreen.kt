@@ -40,6 +40,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.surajverma.notevault.Model.AuthState
 import com.surajverma.notevault.Model.AuthViewModel
+import com.surajverma.notevault.Model.ProfileViewModel
 import com.surajverma.notevault.R
 
 @Composable
@@ -150,7 +151,7 @@ fun SignupScreen(navController: NavController, authViewModel: AuthViewModel){
         Button(onClick = {
             if(email.isNotEmpty() && password.isNotEmpty()) {
                 if (password == confirmPassword){
-                authViewModel.signup(email, password)
+                authViewModel.signup(email, password, context)
                 }
                 else{
                     Toast.makeText(context, "Password and Confirm Password must be same", Toast.LENGTH_SHORT).show()
@@ -185,5 +186,5 @@ fun SignupScreen(navController: NavController, authViewModel: AuthViewModel){
 @Composable
 fun SignupScreenPreview() {
     val navController = rememberNavController()
-    SignupScreen(navController, AuthViewModel())
+    SignupScreen(navController, AuthViewModel(ProfileViewModel()))
 }

@@ -53,9 +53,9 @@ import com.surajverma.notevault.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen(navController: NavController){
+fun ProfileScreen(navController: NavController, authViewModel: AuthViewModel){
 
-    val authViewModel : AuthViewModel = viewModel()
+  //  val authViewModel : AuthViewModel = viewModel()
     val authState = authViewModel.authState.observeAsState()
     val profileViewModel : ProfileViewModel = viewModel()
     val context = LocalContext.current
@@ -232,5 +232,5 @@ fun ProfileScreen(navController: NavController){
 @Composable
 fun ProfileScreenPreview(){
     val navController= rememberNavController()
-    ProfileScreen(navController = navController)
+    ProfileScreen(navController = navController, AuthViewModel(ProfileViewModel()))
 }

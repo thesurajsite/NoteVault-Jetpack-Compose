@@ -128,7 +128,7 @@ fun LoginScreen(navController: NavController, authViewModel: AuthViewModel){
 
         Button(onClick = {
             if(email.isNotEmpty() && password.isNotEmpty()) {
-                authViewModel.login(email, password)
+                authViewModel.login(email, password, context)
             }
         },
             // to disable the login button while loading

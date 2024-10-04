@@ -35,7 +35,7 @@ class AuthViewModel(private val profileViewModel: ProfileViewModel): ViewModel()
         }
     }
 
-    fun login(email: String, password: String ){
+    fun login(email: String, password: String, context: Context ){
 
         if(email.isEmpty() || password.isEmpty()){
             _authState.value= AuthState.Error("Email or Passowrd can't be Empty")
@@ -47,6 +47,10 @@ class AuthViewModel(private val profileViewModel: ProfileViewModel): ViewModel()
             .addOnCompleteListener {
                 if(it.isSuccessful){
                     _authState.value= AuthState.Authenticated
+
+                    // get profile data on login
+                    profileViewModel.getProfileOnLogin(context)
+
                 }
                 else{
                     _authState.value=
@@ -71,8 +75,6 @@ class AuthViewModel(private val profileViewModel: ProfileViewModel): ViewModel()
                 if(it.isSuccessful){
                     _authState.value= AuthState.Authenticated
 
-                    Toast.makeText(context, auth.currentUser?.uid.toString(), Toast.LENGTH_SHORT).show()
-                    
                     GlobalScope.launch ( Dispatchers.Main ){
                         delay(3000)
                         // When the signup completes, user profile is created
@@ -90,9 +92,18 @@ class AuthViewModel(private val profileViewModel: ProfileViewModel): ViewModel()
 
     }
 
-    fun signout(){
+    fun signout(context: Context){
+        sharedPreferences = SharedPreferences(context)
+
         auth.signOut()
         _authState.value= AuthState.Unauthenticated
+
+        sharedPreferences.updateName("")
+        sharedPreferences.updateCollege("")
+        sharedPreferences.updateEnrollment("")
+        sharedPreferences.updateBranch("")
+        sharedPreferences.updateYear("")
+        sharedPreferences.updatePhone("")
 
     }
 }

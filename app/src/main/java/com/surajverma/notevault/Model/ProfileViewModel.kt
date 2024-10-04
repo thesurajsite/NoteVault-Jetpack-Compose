@@ -70,6 +70,32 @@ class ProfileViewModel: ViewModel(){
 
     }
 
+    fun getProfileOnLogin(context: Context){
+
+        sharedPreferences = SharedPreferences(context)
+
+        db.collection(userProfile).document(auth.currentUser?.uid.toString()).get()
+            .addOnSuccessListener {
+                val name = it.get("name").toString()
+                val collegeName=it.get("collegeName").toString()
+                val enrollment=it.get("enrollment").toString()
+                val branch=it.get("branch").toString()
+                val year=it.get("year").toString()
+                val phone=it.get("phone").toString()
+
+                // update sharedPreferences
+                sharedPreferences.updateName(name)
+                sharedPreferences.updateCollege(collegeName)
+                sharedPreferences.updateEnrollment(enrollment)
+                sharedPreferences.updateBranch(branch)
+                sharedPreferences.updateYear(year)
+                sharedPreferences.updatePhone(phone)
+            }
+            .addOnFailureListener {
+                Toast.makeText(context, "Error fetching profile", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
 
 

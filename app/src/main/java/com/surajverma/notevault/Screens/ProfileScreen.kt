@@ -211,7 +211,7 @@ fun ProfileScreen(navController: NavController, authViewModel: AuthViewModel){
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Button(onClick = {
-                    authViewModel.signout()
+                    authViewModel.signout(context)
                 },
                     colors = ButtonDefaults.buttonColors(Color.Red),
                     shape = RectangleShape,

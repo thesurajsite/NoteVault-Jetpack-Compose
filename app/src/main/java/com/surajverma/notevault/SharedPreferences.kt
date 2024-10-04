@@ -39,7 +39,6 @@ class SharedPreferences(private val context: Context): MyInterface {
         val pref: SharedPreferences = getSharedPreferences("NOTEVAULT", Context.MODE_PRIVATE)
         val editor =pref.edit()
         editor.putString("enrollment", newEnrollment)
-
     }
 
     override fun getBranch(): String? {

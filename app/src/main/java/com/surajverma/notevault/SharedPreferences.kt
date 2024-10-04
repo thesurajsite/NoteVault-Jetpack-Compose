@@ -50,7 +50,6 @@ class SharedPreferences(private val context: Context): MyInterface {
         val pref: SharedPreferences = getSharedPreferences("NOTEVAULT", Context.MODE_PRIVATE)
         val editor =pref.edit()
         editor.putString("branch", newBranch)
-
     }
 
     override fun getYear(): String? {
@@ -62,7 +61,6 @@ class SharedPreferences(private val context: Context): MyInterface {
         val pref: SharedPreferences = getSharedPreferences("NOTEVAULT", Context.MODE_PRIVATE)
         val editor =pref.edit()
         editor.putString("year", newYear)
-
     }
 
     override fun getPhone(): String? {
@@ -74,11 +72,9 @@ class SharedPreferences(private val context: Context): MyInterface {
         val pref: SharedPreferences = getSharedPreferences("NOTEVAULT", Context.MODE_PRIVATE)
         val editor =pref.edit()
         editor.putString("phone", newPhone)
-
     }
 
     fun getSharedPreferences(s: String, modePrivate: Int): SharedPreferences {
         return context.getSharedPreferences(s, modePrivate)
-
     }
 }

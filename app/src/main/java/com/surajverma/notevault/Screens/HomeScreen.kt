@@ -6,10 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
@@ -19,8 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.surajverma.notevault.AuthState
-import com.surajverma.notevault.AuthViewModel
+import com.surajverma.notevault.Model.AuthState
+import com.surajverma.notevault.Model.AuthViewModel
 import com.surajverma.notevault.Navigation.BottomNavigationBar
 import com.surajverma.notevault.R
 

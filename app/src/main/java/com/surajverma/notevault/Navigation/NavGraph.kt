@@ -1,12 +1,10 @@
 package com.surajverma.notevault.Navigation
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.surajverma.notevault.AuthViewModel
+import com.surajverma.notevault.Model.AuthViewModel
 import com.surajverma.notevault.Screens.EditProfile
 import com.surajverma.notevault.Screens.HomeScreen
 import com.surajverma.notevault.Screens.LoginScreen

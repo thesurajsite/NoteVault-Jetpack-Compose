@@ -1,4 +1,4 @@
-package com.surajverma.notevault
+package com.surajverma.notevault.Model
 
 data class ProfileModel(
     var name: String ? = "",

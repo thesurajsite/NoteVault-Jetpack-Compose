@@ -1,7 +1,5 @@
-package com.surajverma.notevault
+package com.surajverma.notevault.Model
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,14 +32,15 @@ class AuthViewModel: ViewModel() {
 
         }
 
-        _authState.value=AuthState.Loading
+        _authState.value= AuthState.Loading
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if(it.isSuccessful){
-                    _authState.value=AuthState.Authenticated
+                    _authState.value= AuthState.Authenticated
                 }
                 else{
-                    _authState.value= AuthState.Error(it.exception?.message?: "Something Went Wrong")
+                    _authState.value=
+                        AuthState.Error(it.exception?.message ?: "Something Went Wrong")
 
                 }
             }
@@ -55,14 +54,15 @@ class AuthViewModel: ViewModel() {
 
         }
 
-        _authState.value=AuthState.Loading
+        _authState.value= AuthState.Loading
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if(it.isSuccessful){
-                    _authState.value=AuthState.Authenticated
+                    _authState.value= AuthState.Authenticated
                 }
                 else{
-                    _authState.value= AuthState.Error(it.exception?.message?: "Something Went Wrong")
+                    _authState.value=
+                        AuthState.Error(it.exception?.message ?: "Something Went Wrong")
 
                 }
             }
@@ -71,7 +71,7 @@ class AuthViewModel: ViewModel() {
 
     fun signout(){
         auth.signOut()
-        _authState.value=AuthState.Unauthenticated
+        _authState.value= AuthState.Unauthenticated
 
     }
 }

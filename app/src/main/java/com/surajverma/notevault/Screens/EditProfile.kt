@@ -1,5 +1,6 @@
 package com.surajverma.notevault.Screens
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -181,6 +182,7 @@ fun EditProfile(){
             Button(onClick = {
 
                 profileViewModel.saveProfile(ProfileModel(name, college, enrollment, branch, year, phone), context)
+            //    Toast.makeText(context, "Profile Edited on Firebase and SharedPreferences", Toast.LENGTH_SHORT).show()
             },
                 modifier = Modifier
                     .fillMaxWidth(0.8f),

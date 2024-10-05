@@ -75,13 +75,14 @@ class AuthViewModel(private val profileViewModel: ProfileViewModel): ViewModel()
                 if(it.isSuccessful){
                     _authState.value= AuthState.Authenticated
 
-                    GlobalScope.launch ( Dispatchers.Main ){
-                        delay(3000)
-                        // When the signup completes, user profile is created
-                        val profile = ProfileModel("Anonymous", "College Name", "12345678", "Branch", "1st Year", "1234567890")
-                        profileViewModel.saveProfile(profile, context)
-                    }
+                //    Toast.makeText(context, "Signup Successful", Toast.LENGTH_SHORT).show()
 
+                    // When the signup completes, user profile is created
+                    val profile = ProfileModel("Anonymous", "College Name", "12345678", "Branch", "1st Year", "1234567890")
+                    profileViewModel.saveProfile(profile, context)
+
+                    Toast.makeText(context, "Default Profile Created", Toast.LENGTH_SHORT).show()
+                    
                 }
                 else{
                     _authState.value=
@@ -104,6 +105,8 @@ class AuthViewModel(private val profileViewModel: ProfileViewModel): ViewModel()
         sharedPreferences.updateBranch("")
         sharedPreferences.updateYear("")
         sharedPreferences.updatePhone("")
+
+       // Toast.makeText(context, "SharedPreferences Cleared", Toast.LENGTH_SHORT).show()
 
     }
 }

@@ -55,6 +55,8 @@ class ProfileViewModel: ViewModel(){
 
     fun getProfile(context: Context){
 
+    //    Toast.makeText(context, "Profile Fetched from SharedPreferences", Toast.LENGTH_SHORT).show()
+
         sharedPreferences = SharedPreferences(context)
 
         val name = sharedPreferences.getName()
@@ -71,6 +73,8 @@ class ProfileViewModel: ViewModel(){
     }
 
     fun getProfileOnLogin(context: Context){
+
+      //  Toast.makeText(context, "Profile Fetched from Firebase and saved to SharedPreferences", Toast.LENGTH_SHORT).show()
 
         sharedPreferences = SharedPreferences(context)
 
